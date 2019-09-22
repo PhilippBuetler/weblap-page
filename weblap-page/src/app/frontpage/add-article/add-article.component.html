@@ -1,0 +1,37 @@
+<div id="articlepopup" class="modal" [ngClass]="popup_active ? 'is-active' : ''">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Neuen Artikel erstellen</p>
+      <button class="delete" aria-label="close" (click)="togglePopup()"></button>
+    </header>
+    <section class="modal-card-body">
+      <div class="field">
+        <label class="label">Title hinzufügen</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Beitragstitel">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Untertitel</label>
+        <div class="control">
+          <input class="input" type="text" placeholder="Untertitel hinzufügen">
+        </div>
+      </div>
+
+      <div class="field">
+        <label class="label">Beitragstext</label>
+        <div class="control">
+          <textarea class="textarea" placeholder="Text hinzufügen"></textarea>
+        </div>
+      </div>
+
+
+    </section>
+    <footer class="modal-card-foot">
+      <button class="button is-success">Artikel erstellen</button>
+      <button class="button">Abbrechen</button>
+    </footer>
+  </div>
+</div>

@@ -9,6 +9,12 @@ export class AppComponent {
   menu_active: boolean = false;
   title = 'weblap-page';
   constructor() { }
+
+  public addArticle(): void {
+    let articlePopup = document.getElementById('articlepopup');
+    articlePopup.classList.add("is-active");
+  }
+
   toggleMenu() {
     return this.menu_active = !this.menu_active;
   }
