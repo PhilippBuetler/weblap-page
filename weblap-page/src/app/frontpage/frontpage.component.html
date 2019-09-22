@@ -3,6 +3,26 @@
   <section class="articles">
     <div class="column is-8 is-offset-2">
       <!-- START ARTICLE -->
+      <div class="card article" *ngFor="let a of articles">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content has-text-centered">
+              <p class="title article-title">{{a.title}}</p>
+              <p class="subtitle is-6 article-subtitle">
+                <a href="#">@pille</a> on February 19, 2019
+              </p>
+            </div>
+          </div>
+          <div class="content article-body">
+            <h3 class="has-text-centered">{{a.subtitle}}</h3>
+            <p>
+              {{a.content}}
+            </p>
+          </div>
+        </div>
+      </div>  
+      <!-- END ARTICLE -->
+      <!-- START ARTICLE -->
       <div class="card article">
         <div class="card-content">
           <div class="media">
@@ -22,7 +42,7 @@
             </p>
             <h3 class="has-text-centered">How to properly center tags in bulma?</h3>
             <p>
-              Proper centering of tags in bulma is done with class: 
+              Proper centering of tags in bulma is done with class:
               Voluptat ut farmacium tellus in metus vulputate. Feugiat in fermentum posuere urna nec. Pharetra convallis posuere morbi leo urna molestie.
               Accumsan lacus vel facilisis volutpat est velit egestas. Fermentum leo vel orci porta. Faucibus interdum posuere lorem ipsum.
             </p>
