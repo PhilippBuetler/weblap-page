@@ -31,7 +31,14 @@ class FrontpageRepository {
             subtitle: article.subtitle,
             content: article.content
         };
-        await collection.insertOne({ newArticle });
+        await collection.insertOne({ newArticle }, function (error, response) {
+            if (error) {
+                console.log('Error occurred while inserting');
+                return null;
+            } else {
+                console.log('inserted record', response.ops[0]);
+            }
+        });
 
         return newArticle.id;
     }
