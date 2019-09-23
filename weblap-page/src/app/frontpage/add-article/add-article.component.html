@@ -5,33 +5,33 @@
       <p class="modal-card-title">Neuen Artikel erstellen</p>
       <button class="delete" aria-label="close" (click)="togglePopup()"></button>
     </header>
-    <section class="modal-card-body">
-      <div class="field">
-        <label class="label">Title hinzufügen</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Beitragstitel">
+    <form (ngSubmit)="onSubmit()" #articleForm="ngForm">
+      <section class="modal-card-body">
+        <div class="field">
+          <label class="label">Title hinzufügen</label>
+          <div class="control">
+            <input class="input" [(ngModel)]="model.title" name="title" type="text" placeholder="Beitragstitel">
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Untertitel</label>
-        <div class="control">
-          <input class="input" type="text" placeholder="Untertitel hinzufügen">
+        <div class="field">
+          <label class="label">Untertitel</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="model.subtitle" name="subtitle" placeholder="Untertitel hinzufügen">
+          </div>
         </div>
-      </div>
 
-      <div class="field">
-        <label class="label">Beitragstext</label>
-        <div class="control">
-          <textarea class="textarea" placeholder="Text hinzufügen"></textarea>
+        <div class="field">
+          <label class="label">Beitragstext</label>
+          <div class="control">
+            <textarea class="textarea" [(ngModel)]="model.content" name="content" placeholder="Text hinzufügen"></textarea>
+          </div>
         </div>
-      </div>
-
-
-    </section>
-    <footer class="modal-card-foot">
-      <button class="button is-success">Artikel erstellen</button>
-      <button class="button">Abbrechen</button>
-    </footer>
+      </section>
+      <footer class="modal-card-foot">
+        <button type="submit" class="button is-success">Artikel erstellen</button>
+        <button class="button" (click)="togglePopup()">Abbrechen</button>
+      </footer>
+    </form>
   </div>
 </div>
