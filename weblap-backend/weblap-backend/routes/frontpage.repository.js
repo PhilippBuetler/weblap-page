@@ -7,7 +7,7 @@ class FrontpageRepository {
     async getFrontpageArticles() {
         const client = await this.getClient();
         let collection = this.getCollection(client);
-        let result = await collection.find({});
+        let result = await collection.find().sort({ _id: -1 });
         let resultAsArray = await result.toArray();
         return resultAsArray;
     }
