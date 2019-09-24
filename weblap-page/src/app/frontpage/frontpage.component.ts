@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Article } from './article';
+import { CommunicationService } from '../communication.service';
 
 @Component({
   selector: 'app-frontpage',
@@ -7,10 +8,7 @@ import { Article } from './article';
   styleUrls: ['./frontpage.component.css']
 })
 export class FrontpageComponent implements OnInit {
-
-  backendApi: string = 'http://localhost:1234/frontpage';
-
-  constructor() {
+  constructor(private communicationService: CommunicationService) {
   }
 
   public articles: Article[] = [];
@@ -19,28 +17,12 @@ export class FrontpageComponent implements OnInit {
   content: string;
 
   ngOnInit() {
-    //this.getArticle().then(this.displayArticles);
-
-    this.getArticle().then((data) => {
-      console.log(data);
-      data.forEach((result) => {
-        var entry = result.newArticle;
-        this.articles.push(new Article(entry.title, entry.subtitle, entry.content));
-      });
+    this.getArticle().then((response) => {
+      this.articles = response;
     });
   }
 
   async getArticle() {
-    let response = await fetch(this.backendApi);
-    console.log(response);
-    return await response.json();
-  }
-
-  displayArticles(results)  {
-    console.log(results);
-    results.forEach((result) =>{
-      console.log(result.newArticle.title);
-      this.title = result.newArticle.title;
-   });
+    return this.communicationService.getArticle();
   }
 }
