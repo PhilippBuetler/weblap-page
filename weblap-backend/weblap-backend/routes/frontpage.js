@@ -18,6 +18,14 @@ router.post('/frontpage', (req, res) => {
         .catch(res.status(500));
 });
 
+router.delete('/frontpage/:id', (req, res) => {
+    console.log(req.params.id);
+    let repository = new FrontpageRepository();
+    repository.deletArticle(req.params.id)
+        .then(status => res.send({ status: status }))
+        .catch(res.status(500));
+});
+
 module.exports = router;
 
 

@@ -43,6 +43,14 @@ class FrontpageRepository {
         return newArticle.id;
     }
 
+    async deletArticle(articleId) {
+        const client = await this.getClient();
+        let collection = this.getCollection(client);
+        await collection.deleteOne({ "newArticle.id": articleId });
+        console.log(`article deleted ${articleId}`);
+        return `article deleted ${articleId}`;
+    }
+
     async getClient() {
         console.log(url);
         return await mongo.connect(url).catch((err) => console.log(err));

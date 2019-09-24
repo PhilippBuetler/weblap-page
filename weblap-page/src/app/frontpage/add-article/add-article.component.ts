@@ -12,7 +12,7 @@ export class AddArticleComponent implements OnInit {
 
   constructor(private communicationService: CommunicationService) { }
 
-  model = new Article('', '', '');
+  model = new Article('', '', '', '');
 
   ngOnInit() {
   }

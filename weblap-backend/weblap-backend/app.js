@@ -71,6 +71,13 @@ app.post('/frontpage', (req, res) => {
         .catch(res.status(500));
 });
 
+app.delete('/frontpage/:id', (req, res) => {
+    let repository = new FrontpageRepository();
+    repository.deletArticle(req.params.id)
+        .then(status => res.send({ result: status }))
+        .catch(res.status(500));
+});
+
 app.set('port', 1234);
 
 app.listen(app.get('port'), function () {

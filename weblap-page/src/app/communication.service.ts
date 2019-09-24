@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Article } from './frontpage/article';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class CommunicationService {
       })).then(articles => {
         articles.data.forEach((result) => {
           var entry = result.newArticle;
-          articleList.push(new Article(entry.title, entry.subtitle, entry.content));
+          articleList.push(new Article(entry.id, entry.title, entry.subtitle, entry.content));
         });
       });
     })
@@ -34,6 +34,15 @@ export class CommunicationService {
 
   addArticle(article: Article): Observable<Article>  {
     return this.http.post<Article>(this.backendApi, JSON.stringify(article), this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteArticle(articleId: string): Observable<string> {
+    const url = `${this.backendApi}/${articleId}`;
+
+    return this.http.delete<string>(url, this.httpOptions).pipe(
+      tap(_ => console.log(`deleted article id=${articleId}`)),
       catchError(this.handleError)
     );
   }

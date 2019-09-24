@@ -25,4 +25,12 @@ export class FrontpageComponent implements OnInit {
   async getArticle() {
     return this.communicationService.getArticle();
   }
+
+  deleteArticle(id: string): void {
+    this.communicationService.deleteArticle(id).subscribe(() => {
+      this.getArticle().then((response) => {
+        this.articles = response;
+      });
+    });
+  }
 }

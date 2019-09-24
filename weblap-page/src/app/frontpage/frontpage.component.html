@@ -5,6 +5,7 @@
       <!-- START ARTICLE -->
       <div class="card article" *ngFor="let a of articles">
         <div class="card-content">
+          <button class="delete top-right" (click)="deleteArticle(a.id)" aria-label="close"></button>
           <div class="media">
             <div class="media-content has-text-centered">
               <p class="title article-title">{{a.title}}</p>
