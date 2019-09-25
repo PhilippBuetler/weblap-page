@@ -14,14 +14,17 @@ export class AddArticleComponent implements OnInit {
 
   constructor(private communicationService: CommunicationService) { }
 
-  model = new Article('', '', '', '');
+  model = new Article('', '', '', '','');
 
   ngOnInit() {
   }
 
   uploadFileToActivity() {
     this.communicationService.postFile(this.selectedFile).subscribe(data => {
-      console.log('filemane: ' + JSON.stringify(data));
+      console.log('uploaded filename: ' + data.filepath);
+      let backendApi = this.communicationService.getBackendAPIPath();
+      this.model.imagepath = backendApi +  data.filepath;
+      this.onSubmit();
     }, error => {
       console.log(error);
     });

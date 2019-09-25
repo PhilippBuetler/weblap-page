@@ -8,13 +8,19 @@ import { catchError, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class CommunicationService {
-  backendApi: string = 'http://localhost:1234/frontpage';
+  backendUrl: string = 'http://localhost:1234/';
+
+  backendApi: string = this.backendUrl + 'frontpage';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   constructor(private http: HttpClient) { }
+
+  getBackendAPIPath(): string {
+    return this.backendUrl;
+  }
 
   async getArticle() {
     let articleList: Article[] = [];
@@ -25,7 +31,7 @@ export class CommunicationService {
       })).then(articles => {
         articles.data.forEach((result) => {
           var entry = result.newArticle;
-          articleList.push(new Article(entry.id, entry.title, entry.subtitle, entry.content));
+          articleList.push(new Article(entry.id, entry.title, entry.subtitle, entry.content, entry.imagepath));
         });
       });
     })
@@ -47,7 +53,7 @@ export class CommunicationService {
     );
   }
 
-  postFile(fileToUpload: File){
+  postFile(fileToUpload: File): Observable<any>{
     const endpoint = `${this.backendApi}/file`;
     const formData: FormData = new FormData();
     formData.append('photo', fileToUpload);

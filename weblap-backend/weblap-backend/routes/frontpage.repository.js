@@ -29,7 +29,8 @@ class FrontpageRepository {
             date: new Date(),
             title: article.title,
             subtitle: article.subtitle,
-            content: article.content
+            content: article.content,
+            imagepath: article.imagepath
         };
         await collection.insertOne({ newArticle }, function (error, response) {
             if (error) {
