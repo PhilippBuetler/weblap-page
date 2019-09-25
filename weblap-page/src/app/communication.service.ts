@@ -47,6 +47,17 @@ export class CommunicationService {
     );
   }
 
+  postFile(fileToUpload: File){
+    const endpoint = `${this.backendApi}/file`;
+    const formData: FormData = new FormData();
+    formData.append('photo', fileToUpload);
+    console.log(formData);
+    return this.http.post(endpoint, formData).pipe(
+      tap(data => { return data }),
+      catchError(this.handleError)
+    );
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.

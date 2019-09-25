@@ -19,6 +19,14 @@ export class AddArticleComponent implements OnInit {
   ngOnInit() {
   }
 
+  uploadFileToActivity() {
+    this.communicationService.postFile(this.selectedFile).subscribe(data => {
+      console.log('filemane: ' + JSON.stringify(data));
+    }, error => {
+      console.log(error);
+    });
+  }
+
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
     console.log(this.selectedFile);

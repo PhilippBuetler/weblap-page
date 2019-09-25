@@ -1,8 +1,12 @@
 ﻿var express = require('express');
 var path = require('path');
+var multer = require('multer');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+
+var DIR = './uploads/';
+var upload = multer({ dest: DIR }).single('photo');
 
 require('dotenv').config();
 console.dir(process.env);
@@ -29,8 +33,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+    next();
+});
+
 app.use('/', indexRouter);
 app.use('/frontpage', frontpageRouter);
+
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use('/', express.static(path.join(__dirname, 'angular')));
 
 // catch 404 and forward to error handler
 //app.use(function (req, res, next) {
@@ -67,15 +81,28 @@ app.post('/frontpage', (req, res) => {
     console.log(req.body);
     let repository = new FrontpageRepository();
     repository.addArticle(req.body)
-        .then(articleId => res.send({ articleId: articleId }))
-        .catch(res.status(500));
+        .then(articleId => res.send({ "articleId": articleId }));
+});
+
+app.post('/frontpage/file', (req, res) => {
+    var path = '';
+    upload(req, res, function (err) {
+        if (err) {
+            // An error occurred when uploading
+            console.log(err);
+            return res.status(422).send("an Error occured");
+        }
+        // No error occured.
+        path = req.file.path;
+        console.log(path);
+        return res.send({ "filepath": path });
+    });     
 });
 
 app.delete('/frontpage/:id', (req, res) => {
     let repository = new FrontpageRepository();
     repository.deletArticle(req.params.id)
-        .then(status => res.send({ result: status }))
-        .catch(res.status(500));
+        .then(status => res.send({ "result": status }));
 });
 
 app.set('port', 1234);
