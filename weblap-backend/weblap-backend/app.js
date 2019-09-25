@@ -12,7 +12,14 @@ var storage = multer.diskStorage({
         cb(null, DIR);
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + '.jpg'); //Appending .jpg
+        let fileExtension = '';
+        if (file.mimetype === 'image/png') {
+            fileExtension = '.png';
+        } else {
+            fileExtension = '.jpg';
+        }
+        console.log(file.mimetype);
+        cb(null, Date.now() + fileExtension); //Appending .jpg
     }
 });
 
