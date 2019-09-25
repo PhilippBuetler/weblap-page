@@ -10,11 +10,18 @@ import { CommunicationService } from '../../communication.service';
 export class AddArticleComponent implements OnInit {
   popup_active: boolean = false;
 
+  selectedFile: File;
+
   constructor(private communicationService: CommunicationService) { }
 
   model = new Article('', '', '', '');
 
   ngOnInit() {
+  }
+
+  onFileChanged(event) {
+    this.selectedFile = event.target.files[0];
+    console.log(this.selectedFile);
   }
 
   onSubmit() {

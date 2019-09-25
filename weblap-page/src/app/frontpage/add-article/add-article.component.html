@@ -5,7 +5,7 @@
       <p class="modal-card-title">Neuen Artikel erstellen</p>
       <button class="delete" aria-label="close" (click)="togglePopup()"></button>
     </header>
-    <form (ngSubmit)="onSubmit()" #articleForm="ngForm">
+    <form #articleForm="ngForm">
       <section class="modal-card-body">
         <div class="field">
           <label class="label">Title hinzufügen</label>
@@ -27,9 +27,19 @@
             <textarea class="textarea" [(ngModel)]="model.content" name="content" placeholder="Text hinzufügen"></textarea>
           </div>
         </div>
+
+        <div class="field">
+          <label class="label">Beitragsbild</label>
+          <div class="control">
+            <input style="display: none"
+                   type="file" (change)="onFileChanged($event)"
+                   #fileInput>
+            <button (click)="fileInput.click()">Select File</button>
+          </div>
+        </div>
       </section>
       <footer class="modal-card-foot">
-        <button type="submit" class="button is-success">Artikel erstellen</button>
+        <button type="submit" (click)="onSubmit()" class="button is-success">Artikel erstellen</button>
         <button class="button" (click)="togglePopup()">Abbrechen</button>
       </footer>
     </form>
