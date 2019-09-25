@@ -5,8 +5,18 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var DIR = './uploads/';
-var upload = multer({ dest: DIR }).single('photo');
+var DIR = 'uploads/';
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, DIR);
+    },
+    filename: function (req, file, cb) {
+        cb(null, Date.now() + '.jpg'); //Appending .jpg
+    }
+});
+
+var upload = multer({ storage: storage }).single('photo');
 
 require('dotenv').config();
 console.dir(process.env);
@@ -23,6 +33,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.use('/uploads', express.static('uploads'));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -30,7 +41,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
@@ -81,7 +92,8 @@ app.post('/frontpage', (req, res) => {
     console.log(req.body);
     let repository = new FrontpageRepository();
     repository.addArticle(req.body)
-        .then(articleId => res.send({ "articleId": articleId }));
+        .then(articleId => res.send({ "articleId": articleId }))
+        .catch(res.status(500));
 });
 
 app.post('/frontpage/file', (req, res) => {
