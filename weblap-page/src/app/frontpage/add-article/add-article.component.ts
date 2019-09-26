@@ -19,15 +19,24 @@ export class AddArticleComponent implements OnInit {
   ngOnInit() {
   }
 
-  uploadFileToActivity() {
+  uploadFile() {
     this.communicationService.postFile(this.selectedFile).subscribe(data => {
       console.log('uploaded filename: ' + data.filepath);
       let backendApi = this.communicationService.getBackendAPIPath();
       this.model.imagepath = backendApi +  data.filepath;
-      this.onSubmit();
+      this.addArticleToDb();
     }, error => {
       console.log(error);
     });
+  }
+
+  addArticle() {
+    if (this.selectedFile == null) {
+      this.addArticleToDb()
+    }
+    else {
+      this.uploadFile();
+    }
   }
 
   onFileChanged(event) {
@@ -35,7 +44,7 @@ export class AddArticleComponent implements OnInit {
     console.log(this.selectedFile);
   }
 
-  onSubmit() {
+  addArticleToDb() {
     this.communicationService
       .addArticle(this.model)
       .subscribe(article => console.log(article));

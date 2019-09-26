@@ -5,17 +5,20 @@
       <!-- START ARTICLE -->
       <div class="card article" *ngFor="let a of articles">
         <section class="hero is-info is-bold is-small promo-block">
-          <img class="title-image" style="margin-top:-1em" src="{{a.imagepath}}" />
 
-          <div class="container">
-            <!--<h1 class="title image-overlapping">
-        <i class="fa fa-bell-o"></i> Turnerreise 201923
-      </h1>-->
-            <span class="tag is-black is-medium is-rounded image-overlapping">
-              <i class="fa fa-bell-o"></i> {{a.title}}
-            </span>
+          <div *ngIf="a.imagepath" style="margin-bottom:-20px">
+            <img class="title-image" style="margin-top:-1em;" src="{{a.imagepath}}" />
+            <div *ngIf="a.imagepath" class="container">
+              <!--<h1 class="title image-overlapping">
+                <i class="fa fa-bell-o"></i> Turnerreise 201923
+              </h1>-->
+              <span class="tag is-black is-medium is-rounded image-overlapping">
+                <i class="fa fa-bell-o"></i> {{a.title}}
+              </span>
+            </div>
           </div>
-          <div class="card-content" style="margin-top:-20px">
+
+          <div class="card-content">
             <button class="delete" style="float:right" (click)="deleteArticle(a.id)" aria-label="close"></button>
             <div class="media">
               <div class="media-content has-text-centered">
