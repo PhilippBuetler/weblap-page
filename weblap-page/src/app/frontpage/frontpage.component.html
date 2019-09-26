@@ -5,19 +5,17 @@
       <!-- START ARTICLE -->
       <div class="card article" *ngFor="let a of articles">
         <section class="hero is-info is-bold is-small promo-block">
-
-          <div *ngIf="a.imagepath" style="margin-bottom:-20px">
-            <img class="title-image" style="margin-top:-1em;" src="{{a.imagepath}}" />
-            <div *ngIf="a.imagepath" class="container">
+          <div class="image-container" *ngIf="a.imagepath">
+            <img class="title-image" src="{{a.imagepath}}" />
+            <div *ngIf="a.imagepath">
               <!--<h1 class="title image-overlapping">
                 <i class="fa fa-bell-o"></i> Turnerreise 201923
               </h1>-->
-              <span class="tag is-black is-medium is-rounded image-overlapping">
+              <span class="tag is-black is-medium is-rounded top-left">
                 <i class="fa fa-bell-o"></i> {{a.title}}
               </span>
             </div>
           </div>
-
           <div class="card-content">
             <button class="delete" style="float:right" (click)="deleteArticle(a.id)" aria-label="close"></button>
             <div class="media">
@@ -41,22 +39,23 @@
       </div>
       <!-- END ARTICLE -->
       <section class="hero is-info is-bold is-small promo-block">
-        <img class="title-image" style="margin-top:-1em" src="./assets/img/background.png" />
-
-        <div class="container">
-          <!--<h1 class="title image-overlapping">
-            <i class="fa fa-bell-o"></i> Turnerreise 201923
-          </h1>-->
-          <span class="tag is-black is-medium is-rounded image-overlapping">
-            <i class="fa fa-bell-o"></i> Turnerreise 2019
-    </span>
+        <div class="image-container">
+          <img class="title-image" src="./assets/img/background.png" />
+          <div>
+            <!--<h1 class="title image-overlapping">
+              <i class="fa fa-bell-o"></i> Turnerreise 201923
+            </h1>-->
+            <span class="tag is-black is-medium is-rounded top-left">
+              <i class="fa fa-bell-o"></i> Turnerreise 2019
+            </span>
+          </div>
         </div>
         <div class="">
           <h1 class="title">
             <i class="fa fa-bell-o"></i> Turnerreise 2019
           </h1>
         </div>
-        <div class="card-content" style="margin-top:-60px">
+        <div class="card-content" style="margin-top:-40px">
           <button class="delete" style="float:right" (click)="deleteArticle(a.id)" aria-label="close"></button>
           <div class="media">
             <div class="media-content has-text-centered">
@@ -77,51 +76,6 @@
           </div>
         </div>
       </section>
-      <!-- END PROMO BLOCK -->
-      <!-- START PROMO BLOCK -->
-      <section class="hero is-info is-bold is-small promo-block">
-        <div class="hero-body">
-          <div class="container">
-            <h1 class="title">
-              <i class="fa fa-bell-o"></i> Nemo enim ipsam voluptatem quia.
-            </h1>
-            <span class="tag is-black is-medium is-rounded">
-              Natus error sit voluptatem
-            </span>
-          </div>
-        </div>
-      </section>
-      <!-- END PROMO BLOCK -->
-      <!-- START ARTICLE -->
-      <div class="card article">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-center">
-              <img src="http://www.radfaces.com/images/avatars/daria-morgendorffer.jpg" class="author-image" alt="Placeholder image">
-            </div>
-            <div class="media-content has-text-centered">
-              <p class="title article-title">Sapien eget mi proin sed 🔱</p>
-              <p class="subtitle is-6 article-subtitle">
-                <a href="#">@daria</a> on February 17, 2018
-              </p>
-            </div>
-          </div>
-          <div class="content article-body">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Accumsan lacus vel facilisis volutpat est velit egestas. Sapien eget mi proin sed. Sit amet mattis vulputate enim.
-            </p>
-            <p>
-              Commodo ullamcorper a lacus vestibulum sed arcu. Fermentum leo vel orci porta non. Proin fermentum leo vel orci porta non pulvinar. Imperdiet proin fermentum leo vel. Tortor posuere ac ut consequat semper viverra. Vestibulum lectus mauris ultrices eros.
-            </p>
-            <h3 class="has-text-centered">Lectus vestibulum mattis ullamcorper velit sed ullamcorper morbi. Cras tincidunt lobortis feugiat vivamus.</h3>
-            <p>
-              In eu mi bibendum neque egestas congue quisque egestas diam. Enim nec dui nunc mattis enim ut tellus. Ut morbi tincidunt augue interdum velit euismod in. At in tellus integer feugiat scelerisque varius morbi enim nunc. Vitae suscipit tellus mauris a diam.
-              Arcu non sodales neque sodales ut etiam sit amet.
-            </p>
-          </div>
-        </div>
-      </div>
-      <!-- END ARTICLE -->
     </div>
 
   </section>

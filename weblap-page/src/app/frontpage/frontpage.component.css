@@ -11,12 +11,7 @@
   background-size: cover;
   object-fit: cover;
   background-repeat: no-repeat;
-  height: 500px;
-}
-
-.image-overlapping{
-  position:absolute;
-  top: -480px;
+  /*height: 500px;*/
 }
 
 .articles {
@@ -91,4 +86,17 @@ div.column.is-8:first-child {
 
 .hero.is-info.is-bold {
   background-image: linear-gradient(141deg,#fff 0,#fff 71%,#fff 100%);
+}
+
+.image-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+/* Top left text */
+.top-left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
 }
