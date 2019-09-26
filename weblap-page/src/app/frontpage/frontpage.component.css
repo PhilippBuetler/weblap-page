@@ -11,7 +11,7 @@
   background-size: cover;
   object-fit: cover;
   background-repeat: no-repeat;
-  /*height: 500px;*/
+  height: 500px;
 }
 
 .articles {
@@ -97,6 +97,6 @@ div.column.is-8:first-child {
 /* Top left text */
 .top-left {
   position: absolute;
-  top: 8px;
+  top: 16px;
   left: 16px;
 }
