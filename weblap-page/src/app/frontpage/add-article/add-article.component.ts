@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Article } from '../article';
-import { CommunicationService } from '../../communication.service';
+import { Article } from 'src/app/_models/article';
+import { CommunicationService } from 'src/app/_services/communication.service';
 
 @Component({
   selector: 'app-add-article',
@@ -8,8 +8,6 @@ import { CommunicationService } from '../../communication.service';
   styleUrls: ['./add-article.component.css']
 })
 export class AddArticleComponent implements OnInit {
-  popup_active: boolean = false;
-
   selectedFile: File;
 
   constructor(private communicationService: CommunicationService) { }
@@ -51,6 +49,7 @@ export class AddArticleComponent implements OnInit {
   }
 
   togglePopup() {
-    return this.popup_active = !this.popup_active;
+    let articlePopup = document.getElementById('articlepopup');
+    articlePopup.classList.toggle("is-active");
   }
 }

@@ -1,4 +1,4 @@
-  <!-- START NAV -->
+<!-- START NAV -->
 <nav class="navbar">
   <div class="container">
     <div class="navbar-brand">
@@ -13,41 +13,43 @@
     </div>
     <div id="navbarMenu" class="navbar-menu" [ngClass]="menu_active ? 'is-active' : ''">
       <div class="navbar-end">
-        <a class="navbar-item is-active">
+        <a class="navbar-item is-active" routerLink="/frontpage">
           Home
         </a>
-        <a class="navbar-item">
+        <a class="navbar-item" *ngIf="isUser || isAdmin" routerLink="/intern">
           Intern
         </a>
-        <a class="navbar-item" (click)="addArticle()">
+        <a class="navbar-item" *ngIf="isAdmin" (click)="addArticle()">
           Neuen Eintrag erstellen
         </a>
-        <!--<div class="navbar-item has-dropdown is-hoverable">
-    <a class="navbar-link">
-      Account
-    </a>
-    <div class="navbar-dropdown">
-      <a class="navbar-item">
-        Profile
-      </a>
-      <hr class="navbar-divider">
-      <div class="navbar-item">
-        Logout
-      </div>
-    </div>
-  </div>-->
+        <a class="navbar-item" *ngIf="!currentUser" (click)="showLogin()">
+          Login
+        </a>
+        <a class="navbar-item" *ngIf="currentUser" (click)="logout()">
+          Logout
+        </a>
       </div>
     </div>
   </div>
 </nav>
-<!-- END NAV -->
+
 <!-- Header-->
 <section class="hero is-info is-medium is-bold">
   <div class="hero-body">
     <div class="container has-text-centered">
-      <h1 class="title">Herzlich Willkommen auf der Vereinswebseite! <br><br />Nächste Tour: Piz de la Margna 3165 am 15.10.2019</h1>
+      <h1 class="title">Herzlich Willkommen auf der Vereiwebseite! <br><br />Nächste Tour: Piz de la Margna 3165 am 15.10.2019</h1>
     </div>
   </div>
 </section>
 <!-- Header End-->
-<app-frontpage></app-frontpage>
+<!-- main app container -->
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>
+<app-login></app-login>
