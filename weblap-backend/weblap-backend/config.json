@@ -1,0 +1,3 @@
+﻿{
+  "secret": "Some fancy token to sign and verify jwt tokens"
+}
