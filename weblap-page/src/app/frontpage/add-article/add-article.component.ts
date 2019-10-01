@@ -30,7 +30,7 @@ export class AddArticleComponent implements OnInit {
 
   addArticle() {
     if (this.selectedFile == null) {
-      this.addArticleToDb()
+      this.addArticleToDb();
     }
     else {
       this.uploadFile();
@@ -45,7 +45,7 @@ export class AddArticleComponent implements OnInit {
   addArticleToDb() {
     this.communicationService
       .addArticle(this.model)
-      .subscribe(article => console.log(article));
+      .subscribe(() => location.reload());
   }
 
   togglePopup() {
