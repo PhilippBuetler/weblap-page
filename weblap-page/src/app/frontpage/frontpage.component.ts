@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
 import { User } from '../_models/user';
 import { Role } from '../_models/role';
 import { Article } from '../_models/article';
 import { CommunicationService } from '../_services/communication.service';
+import { AddArticleComponent } from './add-article/add-article.component';
 
 @Component({
   selector: 'app-frontpage',
@@ -11,6 +12,8 @@ import { CommunicationService } from '../_services/communication.service';
   styleUrls: ['./frontpage.component.css']
 })
 export class FrontpageComponent implements OnInit {
+  @ViewChild(AddArticleComponent, { static: false }) child: AddArticleComponent;
+
   constructor(private communicationService: CommunicationService,
     private authenticationService: AuthenticationService
   ) {
@@ -43,5 +46,10 @@ export class FrontpageComponent implements OnInit {
         this.articles = response;
       });
     });
+  }
+
+  updateArticle(articleToUpdate: Article): void {
+    this.child.setModel(articleToUpdate);
+    this.child.togglePopup();
   }
 }

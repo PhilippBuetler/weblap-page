@@ -39,7 +39,8 @@
         </div>
       </section>
       <footer class="modal-card-foot">
-        <button type="submit" (click)="addArticle()" class="button is-success">Artikel erstellen</button>
+        <button type="submit" *ngIf="!model.id" (click)="addArticle()" class="button is-success">Artikel erstellen</button>
+        <button type="submit" *ngIf="model.id" (click)="updateArticle()" class="button is-success">Artikel updaten</button>
         <button class="button" (click)="togglePopup()">Abbrechen</button>
       </footer>
     </form>

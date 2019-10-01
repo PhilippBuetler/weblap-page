@@ -17,7 +17,8 @@ module.exports = {
     authenticate,
     getFrontpageArticles,
     addArticle,
-    deletArticle
+    deletArticle,
+    updateArticle
 };
 
 async function authenticate({ username, password }) {
@@ -78,6 +79,24 @@ async function deletArticle(articleId) {
     await collection.deleteOne({ "newArticle.id": articleId });
     console.log(`article deleted ${articleId}`);
     return `article deleted ${articleId}`;
+}
+
+async function updateArticle(article) {
+    console.log(article);
+    const client = await getClient();
+    let collection = getCollection(client);
+    var existingArticle = { "newArticle.id": article.id };
+    var newvalues = {
+        $set: {
+            "newArticle.title": article.title, "newArticle.subtitle": article.subtitle, "newArticle.content": article.content, "newArticle.imagepath": article.imagepath
+        }
+    };
+    //await collection.updateOne({ existingArticle, newvalues });
+    await collection.updateOne(existingArticle, newvalues, function (err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+    });
+    return `article updated ${article.id}`;
 }
 
 async function getClient() {

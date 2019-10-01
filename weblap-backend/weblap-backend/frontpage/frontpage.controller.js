@@ -9,6 +9,7 @@ const Role = require('../_helpers/role');
 router.get('/', getArticle);
 router.post('/authenticate', authenticate);
 router.post('/', postArticle);
+router.put('/', updateArticle);
 router.post('/file', postArticleImage);
 router.delete('/:id', deleteArticle);
 module.exports = router;
@@ -43,6 +44,12 @@ function authenticate(req, res, next) {
 function getArticle(req, res, next) {
     frontpageService.getFrontpageArticles().then(articles => res.send(articles))
         .catch(err => console.log(err));
+}
+
+function updateArticle(req, res, next) {
+    frontpageService.updateArticle(req.body)
+        .then(status => res.send({ "result": status }))
+        .catch(err => next(err));
 }
 
 function postArticle(req, res, next) {

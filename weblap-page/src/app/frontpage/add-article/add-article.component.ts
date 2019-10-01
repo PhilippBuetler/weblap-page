@@ -37,6 +37,20 @@ export class AddArticleComponent implements OnInit {
     }
   }
 
+  setModel(articleToSet: Article) {
+    this.model.id = articleToSet.id;
+    this.model.content = articleToSet.content;
+    this.model.title = articleToSet.title;
+    this.model.subtitle = articleToSet.subtitle;
+    this.model.imagepath = articleToSet.imagepath;
+  }
+
+  updateArticle() {
+    console.log(this.model);
+    this.communicationService.updateArticle(this.model)
+      .subscribe(() => location.reload());
+  }
+
   onFileChanged(event) {
     this.selectedFile = event.target.files[0];
     console.log(this.selectedFile);

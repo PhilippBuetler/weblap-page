@@ -16,8 +16,13 @@
               </span>
             </div>
           </div>
+          <div style="margin: 20px 30px -40px 0px; z-index: 1">
+            <button *ngIf="isAdmin" class="delete" style="float:right; margin-left:10px;" (click)="deleteArticle(a.id)" aria-label="close"></button>
+            <a style="float:right" (click)="updateArticle(a)">
+              edit
+            </a>
+          </div>
           <div class="card-content">
-            <button *ngIf="isAdmin" class="delete" style="float:right" (click)="deleteArticle(a.id)" aria-label="close"></button>
             <div class="media">
               <div class="media-content has-text-centered">
                 <p class="title article-title" style="color:black">{{a.title}}</p>

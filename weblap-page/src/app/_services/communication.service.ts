@@ -44,6 +44,12 @@ export class CommunicationService {
     );
   }
 
+  updateArticle(article: Article): Observable<Article> {
+    return this.http.put<Article>(this.backendApi, JSON.stringify(article), this.httpOptions).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   deleteArticle(articleId: string): Observable<string> {
     const url = `${this.backendApi}/${articleId}`;
 
