@@ -1,8 +1,6 @@
 <div class="container">
-  <!-- START ARTICLE FEED -->
   <section class="articles">
     <div class="column is-8 is-offset-2">
-      <!-- START ARTICLE -->
       <div class="card article" *ngFor="let a of articles">
         <section class="hero is-info is-bold is-small promo-block">
           <div class="image-container" *ngIf="a.imagepath">
@@ -39,56 +37,8 @@
             </div>
           </div>
         </section>
-
-
       </div>
-      <!-- END ARTICLE -->
-      <section class="hero is-info is-bold is-small promo-block">
-        <div class="image-container">
-          <img class="title-image" src="./assets/img/background.png" />
-          <div>
-            <!--<h1 class="title image-overlapping">
-        <i class="fa fa-bell-o"></i> Turnerreise 201923
-      </h1>-->
-            <span class="tag is-black is-medium is-rounded top-left">
-              <i class="fa fa-bell-o"></i> Turnerreise 2019
-            </span>
-          </div>
-        </div>
-        <div class="">
-          <h1 class="title">
-            <i class="fa fa-bell-o"></i> Turnerreise 2019
-          </h1>
-        </div>
-        <div style="margin: 0px 30px -20px 0px; z-index: 1">
-          <button *ngIf="isAdmin" class="delete" style="float:right; margin-left:10px;" (click)="deleteArticle(a.id)" aria-label="close"></button>
-          <a *ngIf="isAdmin" style="float:right" (click)="updateArticle(a)">
-            edit
-          </a>
-        </div>
-        <div class="card-content" style="margin-top:-40px">
-          <div class="media">
-            <div class="media-content has-text-centered">
-              <p class="title article-title" style="color:black">Turnerreise 2019</p>
-              <p class="subtitle is-6 article-subtitle" style="color:black">
-                <a href="#" style="color: #3273dc;">@pille</a> on February 19, 2019
-              </p>
-            </div>
-          </div>
-          <div class="content article-body">
-            <h3 class="has-text-centered">Über Land und Wasser mit dem STV Sins</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Accumsan lacus vel facilisis volutpat est velit egestas. Sapien eget mi proin sed. Sit amet mattis vulputate enim.
-            </p>
-            <p>
-              Commodo ullamcorper a lacus vestibulum sed arcu. Fermentum leo vel orci porta non. Proin fermentum leo vel orci porta non pulvinar. Imperdiet proin fermentum leo vel. Tortor posuere ac ut consequat semper viverra. Vestibulum lectus mauris ultrices eros.
-            </p>
-          </div>
-        </div>
-      </section>
     </div>
-
   </section>
-  <!-- END ARTICLE FEED -->
   <app-add-article></app-add-article>
 </div>
