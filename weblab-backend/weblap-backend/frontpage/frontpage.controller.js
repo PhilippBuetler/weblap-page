@@ -8,10 +8,10 @@ const Role = require('../_helpers/role');
 // routes
 router.get('/', getArticle);
 router.post('/authenticate', authenticate);
-router.post('/', postArticle);
-router.put('/', updateArticle);
-router.post('/file', postArticleImage);
-router.delete('/:id', deleteArticle);
+router.post('/', authorize(Role.Admin), postArticle);
+router.put('/', authorize(Role.Admin), updateArticle);
+router.post('/file', authorize(Role.Admin), postArticleImage);
+router.delete('/:id', authorize(Role.Admin), deleteArticle);
 module.exports = router;
 
 var DIR = 'uploads/';

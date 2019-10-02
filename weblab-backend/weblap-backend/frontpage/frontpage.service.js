@@ -1,5 +1,5 @@
 // WTF why does it not work?!
-//const config = require('config.json');
+//const config = require('../config.json');
 const mySecret = "Some fancy token to sign and verify jwt tokens";
 const jwt = require('jsonwebtoken');
 const Role = require('../_helpers/role');

@@ -18,7 +18,7 @@
           </div>
           <div style="margin: 20px 30px -40px 0px; z-index: 1">
             <button *ngIf="isAdmin" class="delete" style="float:right; margin-left:10px;" (click)="deleteArticle(a.id)" aria-label="close"></button>
-            <a style="float:right" (click)="updateArticle(a)">
+            <a *ngIf="isAdmin" style="float:right" (click)="updateArticle(a)">
               edit
             </a>
           </div>
@@ -48,8 +48,8 @@
           <img class="title-image" src="./assets/img/background.png" />
           <div>
             <!--<h1 class="title image-overlapping">
-              <i class="fa fa-bell-o"></i> Turnerreise 201923
-            </h1>-->
+        <i class="fa fa-bell-o"></i> Turnerreise 201923
+      </h1>-->
             <span class="tag is-black is-medium is-rounded top-left">
               <i class="fa fa-bell-o"></i> Turnerreise 2019
             </span>
@@ -60,8 +60,13 @@
             <i class="fa fa-bell-o"></i> Turnerreise 2019
           </h1>
         </div>
+        <div style="margin: 0px 30px -20px 0px; z-index: 1">
+          <button *ngIf="isAdmin" class="delete" style="float:right; margin-left:10px;" (click)="deleteArticle(a.id)" aria-label="close"></button>
+          <a *ngIf="isAdmin" style="float:right" (click)="updateArticle(a)">
+            edit
+          </a>
+        </div>
         <div class="card-content" style="margin-top:-40px">
-          <button class="delete" *ngIf="isAdmin" style="float:right" (click)="deleteArticle(a.id)" aria-label="close"></button>
           <div class="media">
             <div class="media-content has-text-centered">
               <p class="title article-title" style="color:black">Turnerreise 2019</p>
