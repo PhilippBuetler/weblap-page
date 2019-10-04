@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Article } from 'src/app/_models/article';
 import { CommunicationService } from 'src/app/_services/communication.service';
 
@@ -8,6 +8,7 @@ import { CommunicationService } from 'src/app/_services/communication.service';
   styleUrls: ['./add-article.component.css']
 })
 export class AddArticleComponent implements OnInit {
+  @Output() notifyParent = new EventEmitter<string>();
   selectedFile: File;
 
   constructor(private communicationService: CommunicationService) { }
@@ -48,7 +49,7 @@ export class AddArticleComponent implements OnInit {
   updateArticle() {
     console.log(this.model);
     this.communicationService.updateArticle(this.model)
-      .subscribe(() => location.reload());
+      .subscribe(() => this.notifyParent.emit("done"));
   }
 
   onFileChanged(event) {
@@ -59,7 +60,7 @@ export class AddArticleComponent implements OnInit {
   addArticleToDb() {
     this.communicationService
       .addArticle(this.model)
-      .subscribe(() => location.reload());
+      .subscribe(() => this.notifyParent.emit("done"));
   }
 
   togglePopup() {

@@ -48,6 +48,13 @@ export class FrontpageComponent implements OnInit {
     });
   }
 
+  eventFromChild(data) {
+    this.child.togglePopup();
+    this.getArticle().then((response) => {
+      this.articles = response;
+    });
+  }
+
   updateArticle(articleToUpdate: Article): void {
     this.child.setModel(articleToUpdate);
     this.child.togglePopup();
