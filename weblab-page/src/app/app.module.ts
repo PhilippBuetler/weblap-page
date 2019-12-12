@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { LoginComponent } from './login/login.component';
 import { InternComponent } from './intern/intern.component';
+import { SpendenComponent } from './spenden/spenden.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { InternComponent } from './intern/intern.component';
     AddArticleComponent,
     LoginComponent,
     InternComponent,
+    SpendenComponent,
   ],
   imports: [
     BrowserModule,

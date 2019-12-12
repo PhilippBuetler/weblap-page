@@ -3,7 +3,7 @@
   <div class="container">
     <div class="navbar-brand">
       <a class="navbar-item" href="../">
-        <img src="assets/img/froschLogo.png" alt="Logo">
+        <img src="assets/img/logo.jpg" alt="Logo">
       </a>
       <span class="navbar-burger burger" (click)="toggleMenu()" [ngClass]="menu_active ? 'is-active' : ''" data-target="navbarMenu">
         <span></span>
@@ -16,8 +16,8 @@
         <a class="navbar-item is-active" routerLink="/frontpage">
           Home
         </a>
-        <a class="navbar-item" *ngIf="isUser || isAdmin" routerLink="/intern">
-          Intern
+        <a class="navbar-item" *ngIf="isUser || isAdmin" routerLink="/spenden">
+          Spendenübersicht
         </a>
         <a class="navbar-item" *ngIf="isAdmin" (click)="addArticle()">
           Neuen Eintrag erstellen
@@ -37,7 +37,7 @@
 <section class="hero is-info is-medium is-bold">
   <div class="hero-body">
     <div class="container has-text-centered">
-      <h1 class="title">Herzlich Willkommen auf der Vereinswebseite! <br><br />Nächste Tour: Piz de la Margna 3165 am 15.10.2019</h1>
+      <h1 class="title" style="color:black">Herzlich Willkommen bei BFair! <br><br />BHuman, BNice, BWise, BExcited, BThere, BUnited, BFair</h1>
     </div>
   </div>
 </section>
