@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { User } from './_models/user';
+import { Spender } from './_models/spender';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './_services/authentication.service';
 import { Role } from './_models/role';
@@ -12,7 +12,7 @@ import { Role } from './_models/role';
 export class AppComponent {
   menu_active: boolean = false;
   title = 'weblap-page';
-  currentUser: User;
+  currentUser: Spender;
 
   constructor(
     private router: Router,

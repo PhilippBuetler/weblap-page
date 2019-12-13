@@ -2,15 +2,42 @@
   <!-- START ARTICLE FEED -->
   <section class="articles">
     <div class="column is-8 is-offset-2">
-      <section class="hero is-info is-bold is-small promo-block">
+      <section style="background-color:white">
         <div class="card-content">
           <div class="media">
             <div class="media-content has-text-centered">
-              <p class="title article-title" style="color:black">Userpage</p>
+              <p class="title article-title" style="color:black">Hallo {{currentUser.prename}} {{currentUser.lastname}}</p>
             </div>
           </div>
           <div class="content article-body">
-            <h3 class="has-text-centered">Hier Userpage, oder so...</h3>
+            <h3 class="has-text-centered">...</h3>
+
+            <div style="margin-top:15px" class="columns">
+              <div class="column">Vornamen:</div>
+              <div class="column">{{currentUser.prename}}</div>
+            </div>
+            <div class="columns">
+              <div class="column">Nachnamen:</div>
+              <div class="column">{{currentUser.lastname}}</div>
+            </div>
+            <div class="columns">
+              <div class="column">E-mail:</div>
+              <div class="column">{{currentUser.email}}</div>
+            </div>
+            <div class="columns">
+              <div class="column">Tokens:</div>
+              <div class="column">{{currentUser.credit}}</div>
+            </div>
+            <div class="columns">
+              <div class="column">Wallet Id:</div>
+              <div class="column">{{currentUser.walletId}}</div>
+            </div>
+
+            <h3 class="has-text-centered">Bisherige spenden!</h3>
+            <div class="columns">
+              <div *ngIf="!hasTransactions" class="column">Leider noch keine Spenden gefunden... :(</div>
+              <div *ngIf="hasTransactions" class="column">Cool, ein spender :)</div>
+            </div>
           </div>
         </div>
       </section>

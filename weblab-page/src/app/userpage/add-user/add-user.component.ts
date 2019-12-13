@@ -11,7 +11,7 @@ export class AddUserComponent implements OnInit {
 
   constructor(private userService: UserService) { }
 
-  model = new Spender('', '', '', '');
+  model = new Spender('', '', '', '',0);
 
   ngOnInit() {
   }

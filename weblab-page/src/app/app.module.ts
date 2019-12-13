@@ -16,6 +16,7 @@ import { InternComponent } from './intern/intern.component';
 import { SpendenComponent } from './spenden/spenden.component';
 import { UserpageComponent } from './userpage/userpage.component';
 import { AddUserComponent } from './userpage/add-user/add-user.component';
+import { SpendenPopupComponent } from './frontpage/spenden-popup/spenden-popup.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AddUserComponent } from './userpage/add-user/add-user.component';
     SpendenComponent,
     UserpageComponent,
     AddUserComponent,
+    SpendenPopupComponent,
   ],
   imports: [
     BrowserModule,

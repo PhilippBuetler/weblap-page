@@ -1,0 +1,29 @@
+<div id="spendenpopup" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Ja, ich will spenden!</p>
+      <button class="delete" aria-label="close" (click)="togglePopup()"></button>
+    </header>
+    <form #articleForm="ngForm">
+      <section class="modal-card-body">
+        <div class="field">
+          <label class="label">Es werden sagenhafte 98% deines gespendeten Betrages an das Projekt {{model.projectName}}
+          gespendet. Mit den 2 % Finanzieren wir uns unsere Räume und planen nachhaltige Projekte.</label>
+        </div>
+
+        <div class="field">
+          <label class="label">Spendenbetrag</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="model.donation" name="donation" placeholder="Spendenbetrag hinzufügen">
+          </div>
+        </div>
+
+      </section>
+      <footer class="modal-card-foot">
+        <button type="submit" class="button is-success">Spenden</button>
+        <button class="button" (click)="togglePopup()">Abbrechen</button>
+      </footer>
+    </form>
+  </div>
+</div>

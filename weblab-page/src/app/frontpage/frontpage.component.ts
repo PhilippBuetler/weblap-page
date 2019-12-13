@@ -1,10 +1,11 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthenticationService } from '../_services/authentication.service';
-import { User } from '../_models/user';
+import { Spender } from '../_models/spender';
 import { Role } from '../_models/role';
 import { Article } from '../_models/article';
 import { CommunicationService } from '../_services/communication.service';
 import { AddArticleComponent } from './add-article/add-article.component';
+import { SpendenPopupComponent } from './spenden-popup/spenden-popup.component';
 
 @Component({
   selector: 'app-frontpage',
@@ -13,6 +14,7 @@ import { AddArticleComponent } from './add-article/add-article.component';
 })
 export class FrontpageComponent implements OnInit {
   @ViewChild(AddArticleComponent, { static: false }) child: AddArticleComponent;
+  @ViewChild(SpendenPopupComponent, { static: false }) child2: SpendenPopupComponent;
 
   constructor(private communicationService: CommunicationService,
     private authenticationService: AuthenticationService
@@ -21,7 +23,7 @@ export class FrontpageComponent implements OnInit {
   }
 
   public articles: Article[] = [];
-  currentUser: User;
+  currentUser: Spender;
   title: string;
   subtitle: string;
   content: string;
@@ -58,5 +60,13 @@ export class FrontpageComponent implements OnInit {
   updateArticle(articleToUpdate: Article): void {
     this.child.setModel(articleToUpdate);
     this.child.togglePopup();
+  }
+
+  spenden(project: Article): void {
+    console.log(this.child)
+    console.log("_________________");
+    console.log(this.child2);
+    this.child2.setSpendenModel(project);
+    this.child2.toggleSpendenPopup();
   }
 }

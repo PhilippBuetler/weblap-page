@@ -22,7 +22,7 @@ async function authenticate({ username, password }) {
     resultAsArray.forEach(element => console.log(element.newUser.email));
     let user = await resultAsArray.find(u => u.newUser.email === username && u.newUser.password === password);
     var u = user.newUser;
-    user = { id: u.id, prename: u.prename, lastname: u.lastname, email: u.email, password: u.password, token: u.token, walletId: u.walletId, walletPassword: u.walletPassword, role: u.role };
+    user = { id: u.id, prename: u.prename, lastname: u.lastname, email: u.email, password: u.password, credit: u.credit, walletId: u.walletId, walletPassword: u.walletPassword, role: u.role };
     console.log(user);
     if (user) {
         const token = jwt.sign({ sub: user.id, role: user.role }, mySecret);
@@ -68,10 +68,11 @@ async function addUser(user) {
         lastname: user.lastname,
         email: user.email,
         password: user.password,
-        token: user.token,
+        credit: user.credit,
         walletId: user.walletId,
         walletPassword: user.walletPassword,
-        role: Role.User
+        role: Role.User,
+        transactionId: ''
     };
     await collection.insertOne({ newUser }, function (error, response) {
         if (error) {

@@ -12,4 +12,6 @@ export class SpendenComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Spender } from '../_models/spender';
+import { AuthenticationService } from '../_services/authentication.service';
 
 @Component({
   selector: 'app-userpage',
@@ -6,10 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./userpage.component.css']
 })
 export class UserpageComponent implements OnInit {
+  currentUser: Spender;
 
-  constructor() { }
+  constructor(private authenticationService: AuthenticationService) {
+    this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
+  }
 
   ngOnInit() {
+  }
+
+  get hasTransactions() {
+    return this.currentUser && this.currentUser.transactionId;
   }
 
 }
