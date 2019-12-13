@@ -26,6 +26,11 @@ export class AppComponent {
     articlePopup.classList.add("is-active");
   }
 
+  public addUser(): void {
+    let userPopup = document.getElementById('userpopup');
+    userPopup.classList.add("is-active");
+  }
+
   public showLogin(): void {
     let loginPopup = document.getElementById('loginPopup');
     loginPopup.classList.add("is-active");

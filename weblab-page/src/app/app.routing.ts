@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { FrontpageComponent } from './frontpage/frontpage.component';
 import { InternComponent } from './intern/intern.component';
 import { SpendenComponent } from './spenden/spenden.component';
+import { UserpageComponent } from './userpage/userpage.component';
 
 const appRoutes: Routes = [
   {
@@ -24,8 +25,8 @@ const appRoutes: Routes = [
     data: { roles: [Role.User, Role.Admin] }
   },
   {
-    path: 'spenden',
-    component: SpendenComponent,
+    path: 'userpage',
+    component: UserpageComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.User, Role.Admin] }
   },

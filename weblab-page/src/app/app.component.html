@@ -16,11 +16,14 @@
         <a class="navbar-item is-active" routerLink="/frontpage">
           Home
         </a>
-        <a class="navbar-item" *ngIf="isUser || isAdmin" routerLink="/spenden">
+        <a class="navbar-item" *ngIf="isUser || isAdmin" routerLink="/userpage">
           Spendenübersicht
         </a>
         <a class="navbar-item" *ngIf="isAdmin" (click)="addArticle()">
           Neuen Eintrag erstellen
+        </a>
+        <a class="navbar-item" *ngIf="!currentUser" (click)="addUser()">
+          Registrieren
         </a>
         <a class="navbar-item" *ngIf="!currentUser" (click)="showLogin()">
           Login
@@ -53,3 +56,4 @@
   </div>
 </div>
 <app-login></app-login>
+<app-add-user></app-add-user>

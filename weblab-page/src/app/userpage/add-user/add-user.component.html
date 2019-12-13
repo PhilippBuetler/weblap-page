@@ -1,0 +1,45 @@
+<div id="userpopup" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Als neuen Spender registrieren</p>
+      <button class="delete" aria-label="close" (click)="togglePopup()"></button>
+    </header>
+    <form #articleForm="ngForm">
+      <section class="modal-card-body">
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" [(ngModel)]="model.prename" name="Name" type="text" placeholder="Name">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Vorname</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="model.lastname" name="Vorname" placeholder="Vorname hinzufügen">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">E-mail</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="model.email" name="Email" placeholder="E-mail hinzufügen">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Password</label>
+          <div class="control">
+            <input class="input" type="text" [(ngModel)]="model.password" name="password" placeholder="Passwort hinzufügen">
+          </div>
+        </div>
+
+      </section>
+      <footer class="modal-card-foot">
+        <button type="submit" (click)="addUserToDb()" class="button is-success">Als Spender registrieren</button>
+        <button class="button" (click)="togglePopup()">Abbrechen</button>
+      </footer>
+    </form>
+  </div>
+</div>

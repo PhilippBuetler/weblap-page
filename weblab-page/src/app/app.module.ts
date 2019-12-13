@@ -14,6 +14,8 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { LoginComponent } from './login/login.component';
 import { InternComponent } from './intern/intern.component';
 import { SpendenComponent } from './spenden/spenden.component';
+import { UserpageComponent } from './userpage/userpage.component';
+import { AddUserComponent } from './userpage/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { SpendenComponent } from './spenden/spenden.component';
     LoginComponent,
     InternComponent,
     SpendenComponent,
+    UserpageComponent,
+    AddUserComponent,
   ],
   imports: [
     BrowserModule,
