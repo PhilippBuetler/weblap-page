@@ -25,18 +25,17 @@
               <div class="column">{{currentUser.email}}</div>
             </div>
             <div class="columns">
-              <div class="column">Tokens:</div>
-              <div class="column">{{currentUser.credit}}</div>
-            </div>
-            <div class="columns">
               <div class="column">Wallet Id:</div>
               <div class="column">{{currentUser.walletId}}</div>
             </div>
 
             <h3 class="has-text-centered">Bisherige spenden!</h3>
-            <div class="columns">
-              <div *ngIf="!hasTransactions" class="column">Leider noch keine Spenden gefunden... :(</div>
-              <div *ngIf="hasTransactions" class="column">Cool, ein spender :)</div>
+            <div *ngFor="let s of Spenden">
+              <h4>{{s.projectName}}</h4>
+              <div class="columns" style="margin-bottom:20px">
+                <div class="column">{{s.date}}</div>
+                <div class="column">{{s.donation}} Franken</div>
+              </div>
             </div>
           </div>
         </div>

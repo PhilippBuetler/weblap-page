@@ -3,7 +3,7 @@
   <div class="modal-card">
     <header class="modal-card-head">
       <p class="modal-card-title">Ja, ich will spenden!</p>
-      <button class="delete" aria-label="close" (click)="togglePopup()"></button>
+      <button class="delete" aria-label="close" (click)="toggleSpendenPopup()"></button>
     </header>
     <form #articleForm="ngForm">
       <section class="modal-card-body">
@@ -21,8 +21,8 @@
 
       </section>
       <footer class="modal-card-foot">
-        <button type="submit" class="button is-success">Spenden</button>
-        <button class="button" (click)="togglePopup()">Abbrechen</button>
+        <button type="submit" (click)="addDonationToDb()" class="button is-success">Spenden</button>
+        <button class="button" (click)="toggleSpendenPopup()">Abbrechen</button>
       </footer>
     </form>
   </div>

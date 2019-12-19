@@ -57,16 +57,23 @@ export class FrontpageComponent implements OnInit {
     });
   }
 
+  eventFromChild2(data) {
+    this.child2.toggleSpendenPopup();
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!");
+    console.log(":)");
+    console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    this.getArticle().then((response) => {
+      this.articles = response;
+    });
+  }
+
   updateArticle(articleToUpdate: Article): void {
     this.child.setModel(articleToUpdate);
     this.child.togglePopup();
   }
 
   spenden(project: Article): void {
-    console.log(this.child)
-    console.log("_________________");
-    console.log(this.child2);
-    this.child2.setSpendenModel(project);
+    this.child2.setSpendenModel(project, this.currentUser.id);
     this.child2.toggleSpendenPopup();
   }
 }
